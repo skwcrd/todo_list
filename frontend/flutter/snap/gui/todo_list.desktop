@@ -1,0 +1,8 @@
+[Desktop Entry]
+    Name=todo_list
+    Comment=todo_list
+    Exec=todo_list
+    Icon=${SNAP}/meta/gui/todo_list.png # replace name to your app name
+    Terminal=false
+    Type=Application
+    Categories=Sport; #adjust accordingly your snap category
