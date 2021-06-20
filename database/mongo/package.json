@@ -16,6 +16,7 @@
   "author": "Sukawit Charoendet",
   "license": "ISC",
   "dependencies": {
-    "mongo": "^0.1.0"
+    "mongo": "^0.1.0",
+    "mongodb": "^3.6.9"
   }
 }
