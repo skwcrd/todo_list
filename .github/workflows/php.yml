@@ -8,11 +8,14 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Move to directory
+      run: |
+        cd ./backend/php/
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
