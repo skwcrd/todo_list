@@ -1,0 +1,61 @@
+version: '3'
+services:
+    frontend:
+        container_name: "frontend"
+        image: skwcrd/alpine-node
+        ports:
+            - 3000:3000
+        volumes:
+            - './frontend:/app'
+        depends_on:
+            - backend
+        networks:
+            - webnet
+
+    backend:
+        container_name: "backend"
+        image: skwcrd/alpine-node
+        ports:
+            - 4000:4000
+        volumes:
+            - './backend:/app'
+        depends_on:
+            - mongo
+            - redis
+        networks:
+            - webnet
+
+    monitor:
+        container_name: "monitor"
+        image: mongo-express
+        ports:
+            - 8081:8081
+        depends_on:
+            - mongo
+        networks:
+            - webnet
+
+    mongo:
+        container_name: "mongo"
+        image: mongo:3.6
+        environment:
+            - MONGO_DATA_DIR=/data/db
+            - MONGO_LOG_DIR=/dev/null
+        volumes:
+            - './data/db:/data/db'
+            - './import:/import'
+        ports:
+            - 27017:27017
+        networks:
+            - webnet
+
+    redis:
+        container_name: "redis"
+        image: redis:alpine
+        ports:
+            - 6379:6379
+        networks:
+            - webnet
+
+networks:
+    webnet:

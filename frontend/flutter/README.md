@@ -1,6 +1,6 @@
 # Todo List
 
-Todo list application
+Todo list application.
 
 ## Getting Started
 
