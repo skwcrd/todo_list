@@ -12,6 +12,11 @@
     "lint": "npm run lint:js && npm run lint:style",
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skwcrd/todo_list"
+  },
+  "author": "Sukawit Charoendet",
   "lint-staged": {
     "*.{js,vue}": "eslint",
     "*.{css,vue}": "stylelint"

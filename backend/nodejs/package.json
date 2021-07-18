@@ -5,6 +5,11 @@
   "scripts": {
     "start": "nodemon ./bin/www"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skwcrd/todo_list"
+  },
+  "author": "Sukawit Charoendet",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",

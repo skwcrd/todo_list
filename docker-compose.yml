@@ -1,61 +1,64 @@
 version: '3'
 services:
     frontend:
-        container_name: "frontend"
-        image: skwcrd/alpine-node
-        ports:
-            - 3000:3000
-        volumes:
-            - './frontend:/app'
-        depends_on:
-            - backend
-        networks:
-            - webnet
-
-    backend:
-        container_name: "backend"
-        image: skwcrd/alpine-node
+        container_name: frontend
+        build: frontend/angular
+        restart: always
         ports:
             - 4000:4000
-        volumes:
-            - './backend:/app'
-        depends_on:
-            - mongo
-            - redis
-        networks:
-            - webnet
+        # volumes:
+        #     - './frontend:/app'
 
-    monitor:
-        container_name: "monitor"
-        image: mongo-express
+    backend:
+        container_name: backend
+        build: backend/nodejs
+        restart: always
         ports:
-            - 8081:8081
-        depends_on:
-            - mongo
-        networks:
-            - webnet
+            - 3000:3000
+        # volumes:
+        #     - './backend:/app'
+        environment:
+            - MONGO_DB_USERNAME=todo_list-user
+            - MONGO_DB_PASSWORD=todo_list-password
+            - MONGO_DB_HOST=todo_list
+            - MONGO_DB=todo_list
+        links:
+            - database
 
-    mongo:
-        container_name: "mongo"
-        image: mongo:3.6
+#     monitor:
+#         container_name: "monitor"
+#         image: todo_list-monitor
+#         ports:
+#             - 8081:8081
+#         depends_on:
+#             - database
+
+    database:
+        container_name: database
+        image: mongo:latest
+        restart: always
         environment:
             - MONGO_DATA_DIR=/data/db
             - MONGO_LOG_DIR=/dev/null
+            - MONGO_ROOT_USERNAME=todo_list-user
+            - MONGO_ROOT_PASSWORD=todo_list-password
+            - MONGO_DB_USERNAME=todo_list-user
+            - MONGO_DB_PASSWORD=todo_list-password
+            - MONGO_DB=todo_list
         volumes:
-            - './data/db:/data/db'
-            - './import:/import'
+            - ./database/mongo:/home/mongodb
+            - ./database/mongo/init-db.d/:/docker-entrypoint-initdb.d/
+            - ./database/mongo/db:/data/db
         ports:
             - 27017:27017
-        networks:
-            - webnet
+            # - 6379:6379
 
-    redis:
-        container_name: "redis"
-        image: redis:alpine
+    server:
+        container_name: server
+        build: server/nginx
+        restart: always
         ports:
-            - 6379:6379
-        networks:
-            - webnet
-
-networks:
-    webnet:
+            - "80:80"
+        links:
+            - frontend
+            - backend
