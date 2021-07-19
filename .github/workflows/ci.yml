@@ -2,11 +2,9 @@ name: ci
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: main
+    paths:
+      - 'frontend/nuxt/**'
 
 jobs:
   ci:
@@ -34,9 +32,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
-      - name: To directory
-        run: cd frontend/nuxt/
 
       - name: Install dependencies 👨🏻‍💻
         run: npm ci
