@@ -1,7 +1,7 @@
 version: '3'
 services:
     frontend:
-        container_name: frontend
+        container_name: todo_list_frontend
         build: frontend/angular
         restart: always
         ports:
@@ -10,7 +10,7 @@ services:
         #     - './frontend:/app'
 
     backend:
-        container_name: backend
+        container_name: todo_list_backend
         build: backend/nodejs
         restart: always
         ports:
@@ -18,43 +18,44 @@ services:
         # volumes:
         #     - './backend:/app'
         environment:
-            - MONGO_DB_USERNAME=todo_list-user
-            - MONGO_DB_PASSWORD=todo_list-password
-            - MONGO_DB_HOST=todo_list
-            - MONGO_DB=todo_list
+            MONGO_DB_USERNAME: todo_list-user
+            MONGO_DB_PASSWORD: todo_list-password
+            MONGO_DB_HOST: database
+            MONGO_DB_PORT:
+            MONGO_DB_PARAMETERS: "?authSource=admin"
+            MONGO_DB: todo_list
         links:
             - database
 
 #     monitor:
-#         container_name: "monitor"
+#         container_name: todo_list_monitor
 #         image: todo_list-monitor
 #         ports:
 #             - 8081:8081
 #         depends_on:
-#             - database
+#             - backend
 
     database:
-        container_name: database
+        container_name: todo_list_database
         image: mongo:latest
         restart: always
         environment:
-            - MONGO_DATA_DIR=/data/db
-            - MONGO_LOG_DIR=/dev/null
-            - MONGO_ROOT_USERNAME=todo_list-user
-            - MONGO_ROOT_PASSWORD=todo_list-password
-            - MONGO_DB_USERNAME=todo_list-user
-            - MONGO_DB_PASSWORD=todo_list-password
-            - MONGO_DB=todo_list
+            MONGO_DATA_DIR: /data/db
+            MONGO_LOG_DIR: /dev/null
+            MONGO_ROOT_USERNAME: todo_list-user
+            MONGO_ROOT_PASSWORD: todo_list-password
+            MONGO_DB_USERNAME: todo_list-user
+            MONGO_DB_PASSWORD: todo_list-password
+            MONGO_DB: todo_list
         volumes:
             - ./database/mongo:/home/mongodb
             - ./database/mongo/init-db.d/:/docker-entrypoint-initdb.d/
             - ./database/mongo/db:/data/db
         ports:
             - 27017:27017
-            # - 6379:6379
 
     server:
-        container_name: server
+        container_name: todo_list_server
         build: server/nginx
         restart: always
         ports:
