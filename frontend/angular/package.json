@@ -1,7 +1,6 @@
 {
   "name": "todo_list",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/skwcrd/todo_list"
   },
-  "author": "Sukawit Charoendet",
+  "author": "Sukawit Charoendet <sukawit.ch@hotmail.com>",
   "dependencies": {
     "@angular/animations": "~12.0.3",
     "@angular/common": "~12.0.3",

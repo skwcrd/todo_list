@@ -6,8 +6,6 @@ services:
         restart: always
         ports:
             - 4000:4000
-        # volumes:
-        #     - './frontend:/app'
 
     backend:
         container_name: todo_list_backend
@@ -15,8 +13,6 @@ services:
         restart: always
         ports:
             - 3000:3000
-        # volumes:
-        #     - './backend:/app'
         environment:
             MONGO_DB_USERNAME: todo_list-user
             MONGO_DB_PASSWORD: todo_list-password

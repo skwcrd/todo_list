@@ -1,6 +1,6 @@
-var TodoModel = require('../models/todo.model');
+import TodoModel from '../models/todo.model.js';
 
-exports.get = function(req, res) {
+export const getTodo = async (req, res) => {
     var id = req.params.id ?? req.query.id ?? req.body.id;
 
     if ( id != null ) {
@@ -37,7 +37,7 @@ exports.get = function(req, res) {
     }
 };
 
-exports.insert = function(req, res) {
+export const insertTodo = async (req, res) => {
     var name = req.body.name;
     var details = req.body.details;
 

@@ -1,16 +1,16 @@
 {
   "name": "todo_list",
   "version": "1.0.0",
-  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "start": "node ./bin/run.js",
+    "dev": "nodemon ./bin/run.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/skwcrd/todo_list"
   },
-  "author": "Sukawit Charoendet",
+  "author": "Sukawit Charoendet <sukawit.ch@hotmail.com>",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.4",

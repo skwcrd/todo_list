@@ -1,18 +1,17 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+const router = express.Router();
 
-var controller = require('../../controllers/todo.controller');
-
-// var TodoModel = require('../../models/todo.model');
+import { getTodo, insertTodo } from '../../controllers/todo.controller.js';
+// import TodoModel from '../../models/todo.model.js';
 
 router
     .route('/')
-    .get(controller.get)
-    .post(controller.insert);
+    .get(getTodo)
+    .post(insertTodo);
 
 router
     .route('/:id')
-    .get(controller.get)
+    .get(getTodo)
     .delete(function(req, res) {});
 
-module.exports = router;
+export default router;

@@ -1,50 +1,49 @@
-var createError = require('http-errors');
-var express = require('express');
-var cors = require('cors');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mongoose = require("mongoose");
+import createError from 'http-errors';
+import express from 'express';
+import cors from 'cors';
+import { join, resolve } from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import mongoose from 'mongoose';
 
-var indexRouter = require('./routes/index');
-var apiRouter = require('./routes/api');
+import indexRouter from './routes/index.js';
+import apiRouter from './routes/api.js';
 
-var app = express();
+const app = express();
+const __dirname = resolve();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(cors());
 app.use(logger('dev'));
-app.use(express.json());
+app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(join(__dirname, 'public')));
 
-const uri = 'mongodb://127.0.0.1:27017/todo_list?retryWrites=true&gssapiServiceName=mongodb';
+const DB_URL = 'mongodb://127.0.0.1:27017/todo_list?retryWrites=true&gssapiServiceName=mongodb';
 
-mongoose.connect(uri, {
-  ssl: false,
-  writeConcern: {
-    w: 'majority'
-  },
-  readPreference: 'primary',
-  useUnifiedTopology: true,
-  useNewUrlParser: true
-});
+mongoose.connect(DB_URL, {
+    ssl: false,
+    writeConcern: {
+      w: 'majority'
+    },
+    readPreference: 'primary',
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  })
+  // On successful connection
+  .then(() => {
+    console.log("Connected to database:", DB_URL);
+  })
+  // On connection error
+  .catch((error) => {
+    console.log("Connected to database error:", error);
+  });
 
 mongoose.Promise = global.Promise;
-
-// On connection error
-mongoose.connection.on('error', (error) => {
-  console.log("Database error: ", error);
-});
-
-// On successful connection
-mongoose.connection.on('connected', () => {
-  console.log("Connected to database: ", uri);
-});
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
@@ -65,4 +64,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;

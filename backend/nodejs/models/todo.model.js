@@ -1,7 +1,6 @@
-var mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-var schema = mongoose.Schema(
-  {
+const schema = mongoose.Schema({
     name: {
       type: String,
       required: true
@@ -20,4 +19,4 @@ var schema = mongoose.Schema(
     versionKey: false
   });
 
-module.exports = mongoose.model('todo', schema, 'todos');
+export default mongoose.model('todo', schema, 'todos');

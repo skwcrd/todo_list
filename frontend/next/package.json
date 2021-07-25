@@ -1,7 +1,6 @@
 {
   "name": "todo_list",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/skwcrd/todo_list"
   },
-  "author": "Sukawit Charoendet",
+  "author": "Sukawit Charoendet <sukawit.ch@hotmail.com>",
   "dependencies": {
     "next": "11.0.1",
     "react": "17.0.2",

@@ -1,12 +1,11 @@
-var createError = require('http-errors');
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+const router = express.Router();
 
-var todoRouter = require('./api/todo');
+import todoRouter from './api/todo.js';
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Backend API' });
 });
 router.use('/todo', todoRouter);
 
-module.exports = router;
+export default router;

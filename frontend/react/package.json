@@ -1,7 +1,6 @@
 {
   "name": "todo_list",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -12,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/skwcrd/todo_list"
   },
-  "author": "Sukawit Charoendet",
+  "author": "Sukawit Charoendet <sukawit.ch@hotmail.com>",
   "eslintConfig": {
     "extends": [
       "todo_list",

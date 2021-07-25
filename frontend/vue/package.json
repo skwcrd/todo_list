@@ -1,7 +1,6 @@
 {
   "name": "todo_list",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -13,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/skwcrd/todo_list"
   },
-  "author": "Sukawit Charoendet",
+  "author": "Sukawit Charoendet <sukawit.ch@hotmail.com>",
   "dependencies": {
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
