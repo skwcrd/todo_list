@@ -3,8 +3,7 @@ updates:
 
 # Fetch and update latest `npm` packages
 - package-ecosystem: npm
-  directory:
-    - '/'
+  directory: '/'
   schedule:
     interval: daily
     time: '00:00'
