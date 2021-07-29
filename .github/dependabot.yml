@@ -4,12 +4,33 @@ updates:
 # Fetch and update latest `npm` packages
 - package-ecosystem: npm
   directory:
-    - '/frontend/angular/'
+#     - '/frontend/angular/'
     - '/frontend/next/'
+#     - '/frontend/nuxt/'
+#     - '/frontend/react/'
+#     - '/frontend/vue/'
+#     - '/backend/nodejs/'
+  schedule:
+    interval: daily
+    time: '00:00'
+  open-pull-requests-limit: 10
+  reviewers:
+    - skwcrd
+  assignees:
+    - skwcrd
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
+
+- package-ecosystem: npm
+  directory:
+#     - '/frontend/angular/'
+#     - '/frontend/next/'
     - '/frontend/nuxt/'
-    - '/frontend/react/'
-    - '/frontend/vue/'
-    - '/backend/nodejs/'
+#     - '/frontend/react/'
+#     - '/frontend/vue/'
+#     - '/backend/nodejs/'
   schedule:
     interval: daily
     time: '00:00'
