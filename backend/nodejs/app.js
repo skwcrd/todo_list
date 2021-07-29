@@ -4,7 +4,9 @@ import cors from 'cors';
 import { join, resolve } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import mongoose from 'mongoose';
+
+import { connection } from './services/db/mongo.js';
+// import { connection } from './services/db/mysql.js';
 
 import indexRouter from './routes/index.js';
 import apiRouter from './routes/api.js';
@@ -23,27 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(join(__dirname, 'public')));
 
-const DB_URL = 'mongodb://127.0.0.1:27017/todo_list?retryWrites=true&gssapiServiceName=mongodb';
-
-mongoose.connect(DB_URL, {
-    ssl: false,
-    writeConcern: {
-      w: 'majority'
-    },
-    readPreference: 'primary',
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  })
-  // On successful connection
-  .then(() => {
-    console.log("Connected to database:", DB_URL);
-  })
-  // On connection error
-  .catch((error) => {
-    console.log("Connected to database error:", error);
-  });
-
-mongoose.Promise = global.Promise;
+connection();
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
