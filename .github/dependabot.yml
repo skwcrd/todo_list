@@ -81,39 +81,39 @@ updates:
     prefix-development: chore
     include: scope
 
-# Fetch and update latest `npm` packages
-- package-ecosystem: pip
-  directory: '/backend/django/'
-  schedule:
-    interval: daily
-    time: '00:00'
-  open-pull-requests-limit: 10
-  reviewers:
-    - skwcrd
-  assignees:
-    - skwcrd
-  commit-message:
-    prefix: fix
-    prefix-development: chore
-    include: scope
+# Fetch and update latest `pip` packages
+# - package-ecosystem: pip
+#   directory: '/backend/django/'
+#   schedule:
+#     interval: daily
+#     time: '00:00'
+#   open-pull-requests-limit: 10
+#   reviewers:
+#     - skwcrd
+#   assignees:
+#     - skwcrd
+#   commit-message:
+#     prefix: fix
+#     prefix-development: chore
+#     include: scope
 
-# Fetch and update latest `npm` packages
-- package-ecosystem: pip
-  directory: '/backend/flask/'
-  schedule:
-    interval: daily
-    time: '00:00'
-  open-pull-requests-limit: 10
-  reviewers:
-    - skwcrd
-  assignees:
-    - skwcrd
-  commit-message:
-    prefix: fix
-    prefix-development: chore
-    include: scope
+# Fetch and update latest `pip` packages
+# - package-ecosystem: pip
+#   directory: '/backend/flask/'
+#   schedule:
+#     interval: daily
+#     time: '00:00'
+#   open-pull-requests-limit: 10
+#   reviewers:
+#     - skwcrd
+#   assignees:
+#     - skwcrd
+#   commit-message:
+#     prefix: fix
+#     prefix-development: chore
+#     include: scope
 
-# Fetch and update latest `npm` packages
+# Fetch and update latest `gomod` packages
 - package-ecosystem: gomod
   directory: '/backend/golang/'
   schedule:
@@ -145,7 +145,7 @@ updates:
     prefix-development: chore
     include: scope
 
-# Fetch and update latest `npm` packages
+# Fetch and update latest `composer` packages
 - package-ecosystem: composer
   directory: '/backend/php/'
   schedule:
@@ -161,7 +161,7 @@ updates:
     prefix-development: chore
     include: scope
 
-# Fetch and update latest `npm` packages
+# Fetch and update latest `cargo` packages
 - package-ecosystem: cargo
   directory: '/backend/rust/'
   schedule:
