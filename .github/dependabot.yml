@@ -3,7 +3,87 @@ updates:
 
 # Fetch and update latest `npm` packages
 - package-ecosystem: npm
-  directory: '/'
+  directory: '/frontend/angular/'
+  schedule:
+    interval: daily
+    time: '00:00'
+  open-pull-requests-limit: 10
+  reviewers:
+    - skwcrd
+  assignees:
+    - skwcrd
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
+
+# Fetch and update latest `npm` packages
+- package-ecosystem: npm
+  directory: '/frontend/next/'
+  schedule:
+    interval: daily
+    time: '00:00'
+  open-pull-requests-limit: 10
+  reviewers:
+    - skwcrd
+  assignees:
+    - skwcrd
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
+
+# Fetch and update latest `npm` packages
+- package-ecosystem: npm
+  directory: '/frontend/nuxt/'
+  schedule:
+    interval: daily
+    time: '00:00'
+  open-pull-requests-limit: 10
+  reviewers:
+    - skwcrd
+  assignees:
+    - skwcrd
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
+
+# Fetch and update latest `npm` packages
+- package-ecosystem: npm
+  directory: '/frontend/react/'
+  schedule:
+    interval: daily
+    time: '00:00'
+  open-pull-requests-limit: 10
+  reviewers:
+    - skwcrd
+  assignees:
+    - skwcrd
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
+
+# Fetch and update latest `npm` packages
+- package-ecosystem: npm
+  directory: '/frontend/vue/'
+  schedule:
+    interval: daily
+    time: '00:00'
+  open-pull-requests-limit: 10
+  reviewers:
+    - skwcrd
+  assignees:
+    - skwcrd
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
+
+# Fetch and update latest `npm` packages
+- package-ecosystem: npm
+  directory: '/backend/nodejs/'
   schedule:
     interval: daily
     time: '00:00'
