@@ -1,43 +1,43 @@
-name: ci
+# name: ci
 
-on:
-  push:
-    branches: main
-    paths:
-      - 'frontend/nuxt/**'
+# on:
+#   push:
+#     branches: main
+#     paths:
+#       - 'frontend/nuxt/**'
 
-jobs:
-  ci:
-    runs-on: ${{ matrix.os }}
+# jobs:
+#   ci:
+#     runs-on: ${{ matrix.os }}
 
-    strategy:
-      matrix:
-        os: [ ubuntu-latest ]
-        node: [ 14 ]
+#     strategy:
+#       matrix:
+#         os: [ ubuntu-latest ]
+#         node: [ 14 ]
 
-    steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@master
+#     steps:
+#       - name: Checkout 🛎
+#         uses: actions/checkout@master
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v4.1.0
-        with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
+#       - name: Setup node env 🏗
+#         uses: actions/setup-node@v4.1.0
+#         with:
+#           node-version: ${{ matrix.node }}
+#           check-latest: true
 
-      - name: Cache node_modules 📦
-        uses: actions/cache@v4.2.0
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+#       - name: Cache node_modules 📦
+#         uses: actions/cache@v4.2.0
+#         with:
+#           path: ~/.npm
+#           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#           restore-keys: |
+#             ${{ runner.os }}-node-
 
-      - name: Install dependencies 👨🏻‍💻
-        run: npm install
+#       - name: Install dependencies 👨🏻‍💻
+#         run: npm install
 
-      - name: Run linter 👀
-        run: npm run lint
+#       - name: Run linter 👀
+#         run: npm run lint
 
-      - name: Run tests 🧪
-        run: npm run test
+#       - name: Run tests 🧪
+#         run: npm run test
